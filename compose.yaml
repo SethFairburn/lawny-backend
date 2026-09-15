@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: lawny-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: lawny
+      POSTGRES_USER: lawny_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - lawny_postgres_data:/var/lib/postgresql
+
+volumes:
+  lawny_postgres_data:
