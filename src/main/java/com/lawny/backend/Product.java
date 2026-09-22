@@ -26,7 +26,7 @@ public class Product {
         this.notes = notes;
     }
 
-    public Long getID() {
+    public Long getId() {
         return id;
     }
 
