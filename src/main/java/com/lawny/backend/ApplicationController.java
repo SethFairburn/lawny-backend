@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/applications")
@@ -27,10 +28,16 @@ public class ApplicationController {
     }
 
     @GetMapping("/{id}")
-    public ApplicationResponse getApplicationById(
+    public ResponseEntity<ApplicationResponse> getApplicationById(
             @PathVariable("id") Long id) {
 
-        return applicationService.getApplicationById(id);
+        ApplicationResponse application = applicationService.getApplicationById(id);
+
+        if (application == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(application);
     }
 
     @PostMapping
@@ -41,18 +48,30 @@ public class ApplicationController {
     }
 
     @PutMapping("/{id}")
-    public ApplicationResponse updateApplication(
+    public ResponseEntity<ApplicationResponse> updateApplication(
             @PathVariable("id") Long id,
             @RequestBody ApplicationRequest request) {
 
-        return applicationService.updateApplication(id, request);
+        ApplicationResponse application = applicationService.updateApplication(id, request);
+
+        if (application == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(application);
     }
 
     @PutMapping("/{id}/applied")
-    public ApplicationResponse markAsApplied(
+    public ResponseEntity<ApplicationResponse> markAsApplied(
             @PathVariable("id") Long id) {
 
-        return applicationService.markAsApplied(id);
+        ApplicationResponse application = applicationService.markAsApplied(id);
+
+        if (application == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(application);
     }
 
     @DeleteMapping("/{id}")

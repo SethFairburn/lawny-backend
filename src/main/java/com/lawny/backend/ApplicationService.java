@@ -150,12 +150,12 @@ public class ApplicationService {
 
     public List<ApplicationResponse> getAppliedApplications() {
 
-    return applicationRepository
-            .findByAppliedDateIsNotNullOrderByAppliedDateDesc()
-            .stream()
-            .map(this::toResponse)
-            .toList();
-}
+        return applicationRepository
+                .findByAppliedDateIsNotNullOrderByAppliedDateDesc()
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
 }
 
 /*
