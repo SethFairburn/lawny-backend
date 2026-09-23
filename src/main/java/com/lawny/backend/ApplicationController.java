@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.http.ResponseEntity;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/applications")
@@ -31,18 +32,12 @@ public class ApplicationController {
     public ResponseEntity<ApplicationResponse> getApplicationById(
             @PathVariable("id") Long id) {
 
-        ApplicationResponse application = applicationService.getApplicationById(id);
-
-        if (application == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        return ResponseEntity.ok(application);
+        return ResponseEntity.ok(applicationService.getApplicationById(id));
     }
 
     @PostMapping
     public ApplicationResponse createApplication(
-            @RequestBody ApplicationRequest request) {
+            @Valid @RequestBody ApplicationRequest request) {
 
         return applicationService.createApplication(request);
     }
@@ -50,28 +45,16 @@ public class ApplicationController {
     @PutMapping("/{id}")
     public ResponseEntity<ApplicationResponse> updateApplication(
             @PathVariable("id") Long id,
-            @RequestBody ApplicationRequest request) {
+            @Valid @RequestBody ApplicationRequest request) {
 
-        ApplicationResponse application = applicationService.updateApplication(id, request);
-
-        if (application == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        return ResponseEntity.ok(application);
+        return ResponseEntity.ok(applicationService.updateApplication(id, request));
     }
 
     @PutMapping("/{id}/applied")
     public ResponseEntity<ApplicationResponse> markAsApplied(
             @PathVariable("id") Long id) {
 
-        ApplicationResponse application = applicationService.markAsApplied(id);
-
-        if (application == null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        return ResponseEntity.ok(application);
+        return ResponseEntity.ok(applicationService.markAsApplied(id));
     }
 
     @DeleteMapping("/{id}")
@@ -94,3 +77,4 @@ public class ApplicationController {
         return applicationService.getAppliedApplications();
     }
 }
+

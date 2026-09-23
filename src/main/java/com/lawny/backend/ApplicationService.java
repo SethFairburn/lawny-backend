@@ -29,11 +29,9 @@ public class ApplicationService {
 
     public ApplicationResponse getApplicationById(Long id) {
 
-        Application application = applicationRepository.findById(id).orElse(null);
-
-        if (application == null) {
-            return null;
-        }
+        Application application = applicationRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Application with ID " + id + " was not found."));
 
         return toResponse(application);
     }
@@ -42,11 +40,8 @@ public class ApplicationService {
 
         Product product = productRepository
                 .findById(request.productId())
-                .orElse(null);
-
-        if (product == null) {
-            return null;
-        }
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Product with ID " + request.productId() + " was not found."));
 
         Application application = new Application(
                 product,
@@ -63,17 +58,13 @@ public class ApplicationService {
             Long id,
             ApplicationRequest request) {
 
-        Application existingApplication = applicationRepository.findById(id).orElse(null);
+        Application existingApplication = applicationRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Application with ID " + id + " was not found."));
 
-        if (existingApplication == null) {
-            return null;
-        }
-
-        Product product = productRepository.findById(request.productId()).orElse(null);
-
-        if (product == null) {
-            return null;
-        }
+        Product product = productRepository.findById(request.productId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Product with ID " + request.productId() + " was not found."));
 
         existingApplication.setProduct(product);
         existingApplication.setScheduledDate(request.scheduledDate());
@@ -99,16 +90,19 @@ public class ApplicationService {
     }
 
     public void deleteApplication(Long id) {
-        applicationRepository.deleteById(id);
+
+        Application application = applicationRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Application with ID " + id + " was not found."));
+
+        applicationRepository.delete(application);
     }
 
     public ApplicationResponse markAsApplied(Long id) {
 
-        Application application = applicationRepository.findById(id).orElse(null);
-
-        if (application == null) {
-            return null;
-        }
+        Application application = applicationRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Application with ID " + id + " was not found."));
 
         application.setAppliedDate(LocalDate.now());
 
