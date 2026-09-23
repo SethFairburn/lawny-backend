@@ -1,6 +1,8 @@
-package com.lawny.backend;
+package com.lawny.backend.application;
 
 import java.time.LocalDate;
+
+import com.lawny.backend.product.Product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

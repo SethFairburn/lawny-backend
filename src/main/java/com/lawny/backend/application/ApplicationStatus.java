@@ -1,4 +1,4 @@
-package com.lawny.backend;
+package com.lawny.backend.application;
 
 public enum ApplicationStatus {
     UPCOMING,

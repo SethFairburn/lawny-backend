@@ -1,4 +1,4 @@
-package com.lawny.backend;
+package com.lawny.backend.exception;
 
 import java.util.HashMap;
 import java.util.Map;

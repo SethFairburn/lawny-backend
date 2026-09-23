@@ -1,4 +1,4 @@
-package com.lawny.backend;
+package com.lawny.backend.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

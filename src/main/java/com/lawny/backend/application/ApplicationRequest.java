@@ -1,4 +1,4 @@
-package com.lawny.backend;
+package com.lawny.backend.application;
 
 import java.time.LocalDate;
 

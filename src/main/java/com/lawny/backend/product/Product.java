@@ -1,4 +1,4 @@
-package com.lawny.backend;
+package com.lawny.backend.product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

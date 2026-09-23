@@ -1,9 +1,13 @@
-package com.lawny.backend;
+package com.lawny.backend.application;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import com.lawny.backend.exception.ResourceNotFoundException;
+import com.lawny.backend.product.Product;
+import com.lawny.backend.product.ProductRepository;
 
 @Service
 public class ApplicationService {

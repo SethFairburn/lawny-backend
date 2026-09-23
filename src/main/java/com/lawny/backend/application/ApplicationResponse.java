@@ -1,6 +1,8 @@
-package com.lawny.backend;
+package com.lawny.backend.application;
 
 import java.time.LocalDate;
+
+import com.lawny.backend.product.Product;
 
 public record ApplicationResponse(
         Long id,

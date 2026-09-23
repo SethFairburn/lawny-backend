@@ -1,4 +1,4 @@
-package com.lawny.backend;
+package com.lawny.backend.product;
 
 import java.util.List;
 import org.springframework.stereotype.Service;

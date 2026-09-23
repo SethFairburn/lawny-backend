@@ -1,4 +1,4 @@
-package com.lawny.backend;
+package com.lawny.backend.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
