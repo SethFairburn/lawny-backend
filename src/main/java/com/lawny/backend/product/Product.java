@@ -14,15 +14,25 @@ public class Product {
     private String name;
     private String brand;
     private String category;
+    private Double amount;
+    private String unit;
     private String notes;
 
     public Product() {
     }
 
-    public Product(String name, String brand, String category, String notes) {
+    public Product(
+            String name,
+            String brand,
+            String category,
+            Double amount,
+            String unit,
+            String notes) {
         this.name = name;
         this.brand = brand;
         this.category = category;
+        this.amount = amount;
+        this.unit = unit;
         this.notes = notes;
     }
 
@@ -60,6 +70,22 @@ public class Product {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
 }
