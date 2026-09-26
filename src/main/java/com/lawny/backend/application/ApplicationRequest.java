@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Positive;
 public record ApplicationRequest(
 
         @NotNull(message = "Product is required")
-        @Positive(message = "Product ID must be positive")
+        @Positive(message = "Please select a product")
         Long productId,
 
         @NotNull(message = "Scheduled date is required")
